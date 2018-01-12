@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>957</width>
+    <height>622</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="open_image">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>470</y>
+     <width>85</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>打开图片</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="open_file">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>470</y>
+     <width>85</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>打开文件夹</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="file_list">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>241</width>
+     <height>441</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="prev_image">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>590</y>
+     <width>85</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>前一张</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="next_image">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>590</y>
+     <width>85</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>后一张</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="check_box">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>523</y>
+     <width>201</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>人</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>狗</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>车</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>车标</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QGraphicsView" name="graphics_image">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>10</y>
+     <width>631</width>
+     <height>571</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+ <slots>
+  <slot>openImage()</slot>
+ </slots>
+</ui>
