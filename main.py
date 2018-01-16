@@ -6,7 +6,6 @@ from PyQt5.QtWidgets import QFileDialog
 from mainwindows import Ui_Form
 import sys
 import os
-import json
 from fun import filefun
 
 class mywindow(QtWidgets.QWidget,Ui_Form):
@@ -22,6 +21,9 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         self.mImgList = []
         self.filePath = None
         self.filejson = None
+        self.pixmap = None
+        self.scaledPinmaxp = None
+        self.scaledTimes = 1
         self.setupUi(self)
         self.open_image.clicked.connect(self.openImage)
         self.open_file.clicked.connect(self.openfileImage)
@@ -33,21 +35,21 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
     def mousePressEvent(self,ev):
         pos = ev.pos()
         self.startpointx = pos.x()
-        if self.startpointx > self.paintheight:
-            self.startpointx =self.paintheight
+        if self.startpointx >self.scaledPinmaxp.width():
+            self.startpointx =self.scaledPinmaxp.width()
         self.startpointy = pos.y()
-        if self.startpointy >self.paintwidth:
-            self.startpointy = self.paintwidth
+        if self.startpointy >self.scaledPinmaxp.height():
+            self.startpointy = self.scaledPinmaxp.height()
         print(self.startpointx)
 
     def mouseMoveEvent(self, ev):
         pos = ev.pos()
         self.endpointx = pos.x()
-        if self.endpointx >self.paintheight:
-            self.endpointx = self.paintheight
+        if self.endpointx >self.scaledPinmaxp.width():
+            self.endpointx = self.scaledPinmaxp.width()
         self.endpointy = pos.y()
-        if self.endpointy >self.paintwidth:
-            self.endpointy = self.paintwidth
+        if self.endpointy >self.scaledPinmaxp.height():
+            self.endpointy = self.scaledPinmaxp.height()
         self.repaint()
 
     def mouseReleaseEvent(self, ev):
@@ -59,8 +61,12 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         print('文件路径 %s ' % self.filePath)
         print(self.check_box.currentText())
         newname = filefun.filetypetojson(self.filePath)
-        self.filejson[self.check_box.currentText()] = {'startpointx':self.startpointx,'startpointy':self.startpointx,'endpointx':self.endpointx,'endpointy':self.endpointy}
+        self.filejson[self.check_box.currentText()] = {'startpointx':int(self.startpointx/self.scaledTimes),
+                                                       'startpointy':int(self.startpointy/self.scaledTimes),
+                                                       'endpointx':int(self.endpointx/self.scaledTimes),
+                                                       'endpointy':int(self.endpointy/self.scaledTimes)}
         filefun.saveJsonToFile(newname,self.filejson)
+        print("startpointx",self.startpointx)
         print(self.filejson)
 
 
@@ -69,7 +75,13 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         painter.begin(self)
         painter.setRenderHint(QPainter.Antialiasing)
         if self.filePath is not None:
-            painter.drawPixmap(0, 0,QPixmap(self.filePath).scaled(self.paintheight,self.paintwidth,Qt.KeepAspectRatio))
+            self.pixmap = QPixmap(self.filePath)
+            self.scaledPinmaxp = self.pixmap.scaled(self.paintheight, self.paintwidth, Qt.KeepAspectRatio)
+            painter.drawPixmap(0, 0, self.scaledPinmaxp)
+            if self.paintwidth / self.pixmap.width() > self.paintheight / self.pixmap.height():
+                self.scaledTimes = self.paintheight / self.pixmap.height()
+            else:
+                self.scaledTimes = self.paintwidth / self.pixmap.width()
         painter.setPen(QPen(Qt.red, 2, Qt.SolidLine))
         painter.drawLine(self.startpointx, self.startpointy, self.startpointx, self.endpointy)
         painter.drawLine(self.startpointx, self.startpointy, self.endpointx, self.startpointy)
@@ -92,10 +104,10 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         newname = filefun.filetypetojson(self.filePath)
         self.filejson = filefun.readJsonInFile(newname)
         if self.check_box.currentText() in self.filejson :
-            self.startpointx = self.filejson[self.check_box.currentText()]['startpointx']
-            self.startpointy = self.filejson[self.check_box.currentText()]['startpointy']
-            self.endpointx = self.filejson[self.check_box.currentText()]['endpointx']
-            self.endpointy = self.filejson[self.check_box.currentText()]['endpointy']
+            self.startpointx = self.filejson[self.check_box.currentText()]['startpointx']/self.scaledTimes
+            self.startpointy = self.filejson[self.check_box.currentText()]['startpointy']/self.scaledTimes
+            self.endpointx = self.filejson[self.check_box.currentText()]['endpointx']/self.scaledTimes
+            self.endpointy = self.filejson[self.check_box.currentText()]['endpointy']/self.scaledTimes
         #png = QtGui.QPixmap(imgName)
         self.repaint()
 
