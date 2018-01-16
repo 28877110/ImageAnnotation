@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="open_image">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>470</y>
+     <x>710</x>
+     <y>477</y>
      <width>85</width>
      <height>27</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="open_file">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>470</y>
+     <x>820</x>
+     <y>480</y>
      <width>85</width>
      <height>27</height>
     </rect>
@@ -42,7 +42,7 @@
   <widget class="QListWidget" name="file_list">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>700</x>
      <y>10</y>
      <width>241</width>
      <height>441</height>
@@ -52,8 +52,8 @@
   <widget class="QPushButton" name="prev_image">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>590</y>
+     <x>20</x>
+     <y>580</y>
      <width>85</width>
      <height>27</height>
     </rect>
@@ -65,8 +65,8 @@
   <widget class="QPushButton" name="next_image">
    <property name="geometry">
     <rect>
-     <x>810</x>
-     <y>590</y>
+     <x>450</x>
+     <y>580</y>
      <width>85</width>
      <height>27</height>
     </rect>
@@ -78,42 +78,32 @@
   <widget class="QComboBox" name="check_box">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>523</y>
+     <x>730</x>
+     <y>530</y>
      <width>201</width>
      <height>31</height>
     </rect>
    </property>
    <item>
     <property name="text">
-     <string>人</string>
+     <string>car</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>狗</string>
+     <string>dog</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>车</string>
+     <string>person</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>车标</string>
+     <string>logo</string>
     </property>
    </item>
-  </widget>
-  <widget class="QGraphicsView" name="graphics_image">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>10</y>
-     <width>631</width>
-     <height>571</height>
-    </rect>
-   </property>
   </widget>
  </widget>
  <resources/>
