@@ -13,30 +13,17 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="open_image">
-   <property name="geometry">
-    <rect>
-     <x>710</x>
-     <y>477</y>
-     <width>85</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>打开图片</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="open_file">
    <property name="geometry">
     <rect>
-     <x>820</x>
-     <y>480</y>
-     <width>85</width>
-     <height>27</height>
+     <x>700</x>
+     <y>460</y>
+     <width>111</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>打开文件夹</string>
+    <string>openDir</string>
    </property>
   </widget>
   <widget class="QListWidget" name="file_list">
@@ -59,7 +46,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>前一张</string>
+    <string>prev</string>
    </property>
   </widget>
   <widget class="QPushButton" name="next_image">
@@ -72,17 +59,28 @@
     </rect>
    </property>
    <property name="text">
-    <string>后一张</string>
+    <string>next</string>
    </property>
   </widget>
   <widget class="QComboBox" name="check_box">
    <property name="geometry">
     <rect>
-     <x>730</x>
-     <y>530</y>
-     <width>201</width>
-     <height>31</height>
+     <x>700</x>
+     <y>510</y>
+     <width>241</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
    </property>
    <item>
     <property name="text">
@@ -104,6 +102,19 @@
      <string>logo</string>
     </property>
    </item>
+  </widget>
+  <widget class="QPushButton" name="open_magnifier">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>460</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Magnifier</string>
+   </property>
   </widget>
  </widget>
  <resources/>

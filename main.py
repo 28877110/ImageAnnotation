@@ -1,5 +1,5 @@
 #coding:utf-8
-from PyQt5 import QtWidgets,QtGui
+from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPainter, QPixmap, QPen
 from PyQt5.QtWidgets import QFileDialog
@@ -25,7 +25,6 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         self.scaledPinmaxp = None
         self.scaledTimes = 1
         self.setupUi(self)
-        self.open_image.clicked.connect(self.openImage)
         self.open_file.clicked.connect(self.openfileImage)
         self.file_list.itemDoubleClicked.connect(self.fileitemDoubleClicked)
         self.next_image.clicked.connect(self.nextImageClicked)
@@ -47,9 +46,13 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         self.endpointx = pos.x()
         if self.endpointx >self.scaledPinmaxp.width():
             self.endpointx = self.scaledPinmaxp.width()
+        if self.endpointx<0:
+            self.endpointx = 0
         self.endpointy = pos.y()
         if self.endpointy >self.scaledPinmaxp.height():
             self.endpointy = self.scaledPinmaxp.height()
+        if self.endpointy<0:
+            self.endpointy = 0
         self.repaint()
 
     def mouseReleaseEvent(self, ev):
@@ -99,7 +102,6 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         fileWidgetItem = self.file_list.item(index)
         fileWidgetItem.setSelected(True)
         print(self.filePath)
-        #Todo
         #加入读取json文件，加入原有的标记
         newname = filefun.filetypetojson(self.filePath)
         self.filejson = filefun.readJsonInFile(newname)
@@ -111,14 +113,7 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         #png = QtGui.QPixmap(imgName)
         self.repaint()
 
-    def openImage(self):
-        imgName,imgType= QFileDialog.getOpenFileName(self,
-                                    "打开图片",
-                                    "",
-                                    " *.jpg;;*.png;;*.jpeg;;*.bmp;;All Files (*)")
 
-        print(imgName)
-        self.loadImage(imgName)
 
 
     def scanAllImages(self, folderPath):
@@ -183,6 +178,14 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
             self.loadImage(filename)
 
 
+    def eventFilter(self,  source,  event):
+        if event.type() == QtCore.QEvent.MouseMove:
+            if event.buttons() == QtCore.Qt.NoButton:
+                pos = event.pos()
+                self.label.setText('x:%d, y:%d' % (pos.x(),  pos.y()))
+            else:
+                pass # do other stuff
+        return QtGui.QMainWindow.eventFilter(self,  source,  event)
 
 if "__main__" == __name__:
     app = QtWidgets.QApplication(sys.argv)
