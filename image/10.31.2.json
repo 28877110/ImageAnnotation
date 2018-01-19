@@ -1,1 +1,1 @@
-{"car": {"endpointx": 522, "startpointy": 314, "startpointx": 314, "endpointy": 484}, "person": {"endpointx": 620, "endpointy": 279, "startpointx": 248, "startpointy": 248}}
+{"person": {"endpointx": 620, "endpointy": 279, "startpointy": 248, "startpointx": 248}, "car": {"startpointy": 201, "endpointx": 592, "startpointx": 451, "endpointy": 313}}

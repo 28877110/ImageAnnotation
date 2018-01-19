@@ -10,8 +10,8 @@ from fun import filefun
 from magnifier import magnifier
 
 class mywindow(QtWidgets.QWidget,Ui_Form):
-    paintwidth = 580
-    paintheight = 620
+    paintwidth = 600
+    paintheight = 600
 
     def __init__(self):
         super(mywindow,self).__init__()
