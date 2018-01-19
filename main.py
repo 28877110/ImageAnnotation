@@ -7,6 +7,7 @@ from mainwindows import Ui_Form
 import sys
 import os
 from fun import filefun
+from magnifier import magnifier
 
 class mywindow(QtWidgets.QWidget,Ui_Form):
     paintwidth = 580
@@ -30,7 +31,7 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         self.next_image.clicked.connect(self.nextImageClicked)
         self.prev_image.clicked.connect(self.prevImageClicked)
         self.check_box.activated[str].connect(self.onActivate)
-
+        self.open_magnifier.clicked.connect(self.openMagnifier)
     def mousePressEvent(self,ev):
         pos = ev.pos()
         self.startpointx = pos.x()
@@ -178,14 +179,19 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
             self.loadImage(filename)
 
 
-    def eventFilter(self,  source,  event):
-        if event.type() == QtCore.QEvent.MouseMove:
-            if event.buttons() == QtCore.Qt.NoButton:
-                pos = event.pos()
-                self.label.setText('x:%d, y:%d' % (pos.x(),  pos.y()))
-            else:
-                pass # do other stuff
-        return QtGui.QMainWindow.eventFilter(self,  source,  event)
+    # def eventFilter(self,  source,  event):
+    #     if event.type() == QtCore.QEvent.MouseMove:
+    #         if event.buttons() == QtCore.Qt.NoButton:
+    #             pos = event.pos()
+    #             self.label.setText('x:%d, y:%d' % (pos.x(),  pos.y()))
+    #         else:
+    #             pass # do other stuff
+    #     return QtGui.QMainWindow.eventFilter(self,  source,  event)
+
+    def openMagnifier(self):
+        print('asdasdadasd')
+        self.window2 =magnifier.magnifier()
+        self.window2.show()
 
 if "__main__" == __name__:
     app = QtWidgets.QApplication(sys.argv)
