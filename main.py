@@ -32,6 +32,7 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         self.prev_image.clicked.connect(self.prevImageClicked)
         self.check_box.activated[str].connect(self.onActivate)
         self.open_magnifier.clicked.connect(self.openMagnifier)
+
     def mousePressEvent(self,ev):
         pos = ev.pos()
         self.startpointx = pos.x()
@@ -65,10 +66,10 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         print('文件路径 %s ' % self.filePath)
         print(self.check_box.currentText())
         newname = filefun.filetypetojson(self.filePath)
-        self.filejson[self.check_box.currentText()] = {'startpointx':int(self.startpointx/self.scaledTimes),
-                                                       'startpointy':int(self.startpointy/self.scaledTimes),
-                                                       'endpointx':int(self.endpointx/self.scaledTimes),
-                                                       'endpointy':int(self.endpointy/self.scaledTimes)}
+        self.filejson[self.check_box.currentText()] = {'startpointx':int(self.startpointx),
+                                                       'startpointy':int(self.startpointy),
+                                                       'endpointx':int(self.endpointx),
+                                                       'endpointy':int(self.endpointy)}
         filefun.saveJsonToFile(newname,self.filejson)
         print("startpointx",self.startpointx)
         print(self.filejson)
@@ -107,10 +108,10 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         newname = filefun.filetypetojson(self.filePath)
         self.filejson = filefun.readJsonInFile(newname)
         if self.check_box.currentText() in self.filejson :
-            self.startpointx = self.filejson[self.check_box.currentText()]['startpointx']/self.scaledTimes
-            self.startpointy = self.filejson[self.check_box.currentText()]['startpointy']/self.scaledTimes
-            self.endpointx = self.filejson[self.check_box.currentText()]['endpointx']/self.scaledTimes
-            self.endpointy = self.filejson[self.check_box.currentText()]['endpointy']/self.scaledTimes
+            self.startpointx = self.filejson[self.check_box.currentText()]['startpointx']
+            self.startpointy = self.filejson[self.check_box.currentText()]['startpointy']
+            self.endpointx = self.filejson[self.check_box.currentText()]['endpointx']
+            self.endpointy = self.filejson[self.check_box.currentText()]['endpointy']
         #png = QtGui.QPixmap(imgName)
         self.repaint()
 
