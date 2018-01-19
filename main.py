@@ -66,6 +66,8 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         print('文件路径 %s ' % self.filePath)
         print(self.check_box.currentText())
         newname = filefun.filetypetojson(self.filePath)
+        print('文件路进是:',self.filePath.split('/')[-1])
+        self.filejson['filename'] = self.filePath.split('/')[-1]
         self.filejson[self.check_box.currentText()] = {'startpointx':int(self.startpointx),
                                                        'startpointy':int(self.startpointy),
                                                        'endpointx':int(self.endpointx),
