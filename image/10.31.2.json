@@ -1,1 +1,1 @@
-{"filename": "10.31.2.jpg", "person": {"startpointy": 248, "endpointy": 279, "endpointx": 620, "startpointx": 248}, "car": {"startpointy": 109, "endpointy": 325, "endpointx": 387, "startpointx": 141}}
+{"dog": {"endpointy": 443, "startpointy": 162, "startpointx": 173, "endpointx": 552}, "car": {"endpointx": 387, "startpointy": 109, "startpointx": 141, "endpointy": 325}, "person": {"endpointx": 620, "startpointy": 248, "startpointx": 248, "endpointy": 279}, "filename": "10.31.2.jpg"}

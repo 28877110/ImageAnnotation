@@ -28,7 +28,9 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
         self.setupUi(self)
         self.open_file.clicked.connect(self.openfileImage)
         self.file_list.itemDoubleClicked.connect(self.fileitemDoubleClicked)
+        self.next_image.setShortcut("D")
         self.next_image.clicked.connect(self.nextImageClicked)
+        self.prev_image.setShortcut('A')
         self.prev_image.clicked.connect(self.prevImageClicked)
         self.check_box.activated[str].connect(self.onActivate)
         self.open_magnifier.clicked.connect(self.openMagnifier)
@@ -176,10 +178,10 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
     def onActivate(self):
         if self.filePath is not None:
             currIndex = self.mImgList.index(self.filePath)
-        if currIndex + 1 < len(self.mImgList):
-            filename = self.mImgList[currIndex]
-        if self.filePath is not None:
-            self.loadImage(filename)
+            if currIndex + 1 < len(self.mImgList):
+                filename = self.mImgList[currIndex]
+            if self.filePath is not None:
+                self.loadImage(filename)
 
 
     # def eventFilter(self,  source,  event):
