@@ -15,7 +15,7 @@ def writefile(date):
 
 mark = 'car'
 carmark = 'bentian'
-path = '/home/smallfish/home/data/'+carmark
+path = './image'
 parents = os.listdir(path)
 parents.sort()
 extensions = ['.jpeg', '.jpg', '.png', '.bmp']
@@ -54,7 +54,7 @@ for parent in parents:
             y2 = round(max(startpointy,endpointy)/scalTime)
             print(int(x1),int(y1),int(x2),int(y2))
             writefile(fileimg+' ')
-            writefile(carmark +' ')
+            writefile(mark +' ')
             writefile(str(x1)+' ')
             writefile(str(y1)+' ')
             w=x2-x1
