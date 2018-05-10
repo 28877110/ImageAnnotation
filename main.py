@@ -91,7 +91,7 @@ class mywindow(QtWidgets.QWidget,Ui_Form):
                 self.scaledTimes = self.paintheight / self.pixmap.height()
             else:
                 self.scaledTimes = self.paintwidth / self.pixmap.width()
-        painter.setPen(QPen(Qt.red, 2, Qt.SolidLine))
+        painter.setPen(QPen(Qt.red, 1, Qt.SolidLine))
         painter.drawLine(self.startpointx, self.startpointy, self.startpointx, self.endpointy)
         painter.drawLine(self.startpointx, self.startpointy, self.endpointx, self.startpointy)
         painter.drawLine(self.endpointx, self.startpointy, self.endpointx, self.endpointy)
